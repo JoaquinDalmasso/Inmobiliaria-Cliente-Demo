@@ -75,7 +75,7 @@ export default function Listing() {
                 </div>
                 {copied && (
                     <p className='fixed top-[23%] right-[5%] z-10 rounded-md bg-slate-100 p-2'>
-                        Link copied!
+                        Link copiado!
                     </p>
                 )}
                 <div className='flex flex-col max-w-4xl gap-4 p-3 mx-auto my-7'>
@@ -92,7 +92,7 @@ export default function Listing() {
                     </p>
                     <div className='flex gap-4'>
                         <p className='bg-red-900 w-full max-w-[200px] text-white text-center p-1 rounded-md'>
-                            {listing.type === 'rent' ? 'For Rent' : 'For Sale'}
+                            {listing.type === 'rent' ? 'Se alquila' : 'En venta'}
                         </p>
                         {listing.offer && (
                             <p className='bg-green-900 w-full max-w-[200px] text-white text-center p-1 rounded-md'>
@@ -101,27 +101,27 @@ export default function Listing() {
                         )}
                     </div>
                     <p className='text-slate-800'>
-                        <span className='font-semibold text-black'>Description - </span>
+                        <span className='font-semibold text-black'>Descripción - </span>
                         {listing.description}
                     </p>
                     <ul className='flex flex-wrap items-center gap-4 text-sm font-semibold text-green-900 sm:gap-6'>
                         <li className='flex items-center gap-1 whitespace-nowrap '>
                             <FaBed className="text-lg" />
-                            {listing.bedrooms > 1 ? `${listing.bedrooms} beds`: `${listing.bedrooms} bed`}
+                            {listing.bedrooms > 1 ? `${listing.bedrooms} camas`: `${listing.bedrooms} cama`}
                         </li>
                         <li className='flex items-center gap-1 whitespace-nowrap '>
                             <FaBath className='text-lg' />
                             {listing.bathrooms > 1
-                            ? `${listing.bathrooms} baths `
-                            : `${listing.bathrooms} bath `}
+                            ? `${listing.bathrooms} baños `
+                            : `${listing.bathrooms} baño `}
                         </li>
                         <li className='flex items-center gap-1 whitespace-nowrap '>
                             <FaParking className='text-lg' />
-                            {listing.parking ? 'Parking spot' : 'No Parking'}
+                            {listing.parking ? 'Con Cochera' : 'Sin Cochera'}
                         </li>
                         <li className='flex items-center gap-1 whitespace-nowrap '>
                             <FaChair className='text-lg' />
-                            {listing.furnished ? 'Furnished' : 'Unfurnished'}
+                            {listing.furnished ? 'Amoblado' : 'Sin Amoblar'}
                         </li>
                     </ul>
                     {currentUser && listing.userRef !== currentUser._id && !contact && (
@@ -129,7 +129,7 @@ export default function Listing() {
                         onClick={() => setContact(true)}
                         className='p-3 text-white uppercase rounded-lg bg-slate-700 hover:opacity-95'
                     >
-                        Contact landlord
+                        Contacto del vendedor
                     </button>
                     )}
                     {contact && <Contact listing={listing} />}
