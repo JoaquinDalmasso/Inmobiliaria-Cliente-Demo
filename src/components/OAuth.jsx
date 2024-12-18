@@ -39,7 +39,7 @@ export default function OAuth() {
     type='button' 
     className='p-3 text-white uppercase bg-red-700 rounded-lg hover:opacity-95'
     >
-    Continue with Google
+    Continuar con Google
     </button>
   )
 }
