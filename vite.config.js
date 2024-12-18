@@ -6,8 +6,9 @@ export default defineConfig({
   server:{
     proxy:{
       '/api': {
-        target: 'http://localhost:3000',
+        target: 'https://inmobiliariaarg.onrender.com',
         secure: false,
+        changeOrigin: true,
       },
     },
   },

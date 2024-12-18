@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import {Swiper, SwiperSlide} from 'swiper/react'
 import SwiperCore from 'swiper'
 import {Navigation} from 'swiper/modules'
@@ -49,8 +49,8 @@ export default function Listing() {
     }, [params.listingId])
   return (
     <main>
-        {loading && <p className="text-2xl text-center my-7">Loading...</p>}
-        {error && <p className="text-2xl text-center my-7">Someting went wrong</p>}
+        {loading && <p className="text-2xl text-center my-7">Cargando...</p>}
+        {error && <p className="text-2xl text-center my-7">Algo salio mal</p>}
         {listing && !loading && !error && (
             
             <div>
@@ -79,6 +79,7 @@ export default function Listing() {
                     </p>
                 )}
                 <div className='flex flex-col max-w-4xl gap-4 p-3 mx-auto my-7'>
+                
                     <p className='text-2xl font-semibold'>
                         {listing.name} - ${' '}
                         {listing.offer
@@ -86,7 +87,21 @@ export default function Listing() {
                             : listing.regularPrice.toLocaleString('en-US')}
                         {listing.type === 'rent' && ' / month'}
                     </p>
-                    <p className='flex items-center gap-2 mt-6 text-sm text-slate-600'>
+
+                    {listing.vr && (
+                        <div className='flex items-center gap-3'>
+                            <p className='font-semibold text-black'>
+                           Realiza nuestro tour personalizado
+                            </p>
+                            <Link to={"/virtual-tour"}>
+                                <button className='px-4 py-1 font-bold text-white bg-blue-500 rounded hover:bg-blue-700'>
+                                    Tour Virtual
+                                </button>
+                            </Link>
+                        </div>
+                        )}
+
+                    <p className='flex items-center gap-2 mt-1 text-sm text-slate-600'>
                         <FaMapMarkerAlt className='text-green-700' />
                         {listing.address}
                     </p>

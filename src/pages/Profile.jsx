@@ -141,17 +141,17 @@ const handleListingDelete = async (listingId) => {
 
   return (
     <div className="max-w-lg p-3 mx-auto">
-      <h1 className='text-3xl font-semibold text-center my-7'>Profile</h1>
+      <h1 className='text-3xl font-semibold text-center my-7'>Perfil</h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <input onChange={(e) => setFile(e.target.files[0])} type="file" ref={fileRef} hidden accept='image/*' />
         <img src={formData.avatar || currentUser.avatar} alt="profile" className="self-center object-cover w-24 h-24 mt-2 rounded-full cursor-pointer" onClick={() => fileRef.current.click()} />
         <p className="self-center text-sm">
           {fileUploadError?
-          (<span className="text-red-700">Error Image Upload (image must be less than 2 mb)</span>) :
+          (<span className="text-red-700">Error al subir imagen (Debe pesar menos de 2 mb)</span>) :
           filePerc > 0 && filePerc < 100 ? (
             <span>{`Uploading ${filePerc}%`}</span>) :
             filePerc === 100 ? (
-              <span className="text-green-700">Image succesfully uploaded</span>)
+              <span className="text-green-700">Imagen cargada correctamente</span>)
               :
               ""
         }
@@ -163,12 +163,12 @@ const handleListingDelete = async (listingId) => {
           {loading ? 'Loading...' : 'Update'}
         </button>
         <Link className="p-3 text-center text-white uppercase bg-green-700 rounded-lg hover:opacity-95" to={"/create-listing"}>
-          Create Listing
+          Crear inmueble 
         </Link>
       </form>
       <div className="flex justify-between mt-5">
-        <span onClick={handleDeleteUser} className="text-red-500 cursor-pointer">Delete Account</span>
-        <span onClick={handleSignOut} className="text-red-500 cursor-pointer">Sign out</span>
+        <span onClick={handleDeleteUser} className="text-red-500 cursor-pointer">Borrar cuenta</span>
+        <span onClick={handleSignOut} className="text-red-500 cursor-pointer">Cerrar sesión</span>
       </div>
       <p className="mt-5 text-red-700">{error ? error : ""}</p>
       <p className="mt-5 text-green-700">{updateSuccess ? 'User is updated successfully' : ""}</p>
@@ -178,7 +178,7 @@ const handleListingDelete = async (listingId) => {
       <p className="mt-5 text-red-700">{showListingsError ? 'Error showing listings' : ""}</p>
       {userListings && userListings.length > 0 &&
       <div className="flex flex-col gap-4"> 
-        <h1 className="text-2xl font-semibold text-center mt-7">Your Listings</h1>
+        <h1 className="text-2xl font-semibold text-center mt-7">Tus inmuebles</h1>
       {userListings.map((listing) => (
         <div key={listing._id} className="flex items-center justify-between gap-4 p-3 border rounded-lg">
           <Link to={`/listing/${listing._id}`}>
@@ -189,11 +189,11 @@ const handleListingDelete = async (listingId) => {
           </Link>
           <div className="flex flex-col items-center">
             <button onClick={() => handleListingDelete(listing._id)} className="text-red-700 uppercase">
-              Delete
+              Borrar
             </button>
             <Link to={`/update-listing/${listing._id}`}>
             <button className="text-green-700 uppercase">
-              Edit
+              Editar
             </button>
             </Link>
           </div>

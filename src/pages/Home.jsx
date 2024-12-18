@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper/modules';
+import { Navigation, Pagination } from 'swiper/modules';
 import SwiperCore from 'swiper';
 import 'swiper/css/bundle';
 import ListingItem from '../components/ListingItem';
@@ -49,7 +49,7 @@ export default function Home() {
     <div>
 
       {/* top */}
-      <div className='flex flex-col max-w-6xl gap-6 px-3 mx-auto p-28'>
+      <div className='flex flex-col max-w-6xl gap-6 p-24 px-3 mx-auto'>
         <h1 className='text-3xl font-bold text-slate-700 lg:text-6xl'>
           Encuentra el lugar <span className='text-slate-500'>perfecto</span>
           <br/> 
@@ -60,24 +60,32 @@ export default function Home() {
           <br/>
           Tenemos un amplio rango de propiedades para que encuentres la mejor para vos.
         </div>
-        <Link to={"/search"} className='text-xs font-bold text-blue-800 sm:text-sm hover:underline'>
-          Empieza ya...
+        <div>
+          <p className='text-xl font-bold text-slate-700 lg:text-xl'>
+            Descubre una nueva experiencia para encontrar tu lugar ideal
+          </p>
+        <Link to={"/virtual-tour"} className='text-xs font-bold text-blue-800 sm:text-sm hover:underline'>
+          Aqui...
         </Link>
+        </div>
       </div>
 
       {/* swiper */}
-      <Swiper navigation>
+      <Swiper navigation={true}
+        pagination={{
+          clickable: true,
+        }}
+        modules={[Navigation, Pagination]}>
         {offerListings &&
           offerListings.length > 0 &&
           offerListings.map((listing) => (
-            <SwiperSlide>
+            <SwiperSlide key={listing._id}>
               <div
                 style={{
                   background: `url(${listing.imageUrls[0]}) center no-repeat`,
                   backgroundSize: 'cover',
                 }}
                 className='h-[500px]'
-                key={listing._id}
               ></div>
             </SwiperSlide>
           ))}

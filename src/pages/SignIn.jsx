@@ -47,7 +47,7 @@ const handleSubmit = async (e) => {
 
   return (
     <div className='max-w-lg p-3 mx-auto'>
-      <h1 className='text-3xl font-semibold text-center my-7'>Sign In</h1>
+      <h1 className='text-3xl font-semibold text-center my-7'>Iniciar sesion</h1>
       <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
         <input type='email' placeholder='email' className='p-3 border rounded-lg' id='email' onChange={handleChange} />
         <input type='password' placeholder='password' className='p-3 border rounded-lg' id='password' onChange={handleChange} />
@@ -55,9 +55,9 @@ const handleSubmit = async (e) => {
         <OAuth/>
       </form>
       <div className='flex gap-2 mt-5'>
-        <p>Dont have an account?</p>
+        <p>No tienes cuenta?</p>
         <Link to={"/sign-up"}>
-          <span className='text-blue-700'>Sign Up</span>
+          <span className='text-blue-700'>Registro</span>
         </Link>
       </div>
       {error && <p className='mt-5 text-red-500'>{error}</p>}
